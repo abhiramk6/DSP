@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Upload Image</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+<button type="submit" id="myBtn1" >Upload</button>
+
+</form>
+<br>
+<br>
+
+<td><a href="{% url 'original-image' 10 %}"><button id="myBtn" type="button">Original Image</button></a> </td>
+<td><a href="{% url 'gray-image' 10 %}"><button id="myBtn" type="button">Download Gray Scale Image</button></a> </td>
+<td><a href="{% url 'rotated-image' 10 %}"><button id="myBtn" type="button">Download Rotated Image</button></a> </td>
+
+
+{% endblock %}
