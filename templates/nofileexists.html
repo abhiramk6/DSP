@@ -1,3 +1,16 @@
-<h1>No File uploaded</h1>
+{% extends 'base.html' %}
 
-<a href="{% url 'upload_image' %}"><button type="button" class="btn btn-success">HOME</button></a>
+
+
+{% block content %}
+
+
+
+    <div class="px-4 py-4 mx-4 my-4">
+
+    <h1>No File uploaded</h1>
+
+<a href="{% url 'upload_image' %}"><button type="btn btn-primary btn-block" class="btn btn-success">HOME</button></a>
+
+    </div>
+{% endblock %}
