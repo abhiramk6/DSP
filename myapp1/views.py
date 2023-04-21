@@ -10,6 +10,7 @@ from django.shortcuts import get_object_or_404
 from .models import Image
 import os
 from django.db.models import Model
+from rembg import remove
 
 import cv2
 
@@ -80,6 +81,28 @@ def rotated_image(request, image_id):
     print(file_path1)
 
     cv2.imwrite(file_path1,rotimage)
+
+    if os.path.isfile(file_path1):
+        with open(file_path1, 'rb') as f:
+            response = HttpResponse(f.read(), content_type='image/jpeg')
+            response['Content-Disposition'] = 'attachment; filename=' + image.title
+            return response
+    else:
+        return render(request, 'nofileexists.html')
+
+
+def rmbg_image(request, image_id):
+    x=Image.objects.count()
+    image = get_object_or_404(Image, pk=x)
+    file_path = image.file.path
+    im = cv2.imread(file_path)
+    rmbgimage = remove(im)
+    ff=file_path.split(".")
+    file_path1=ff[0]+"_rmbg.png"
+    print(file_path)
+    print(file_path1)
+
+    cv2.imwrite(file_path1,rmbgimage)
 
     if os.path.isfile(file_path1):
         with open(file_path1, 'rb') as f:
