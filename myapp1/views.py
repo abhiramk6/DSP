@@ -1,18 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
 from .forms import ImageForm
+from .models import Image
+
+from .models import AudioFile
+from .forms import AudioFileForm
+
 
 from django.http import HttpResponse
+from django.http import FileResponse
+
 from django.conf import settings
 from django.shortcuts import get_object_or_404
-from .models import Image
+
 import os
 from django.db.models import Model
 from rembg import remove
-
 import cv2
+
 
 
 
@@ -113,3 +120,22 @@ def rmbg_image(request, image_id):
         return render(request, 'nofileexists.html')
         
 
+def audio_upload(request):
+    if request.method == 'POST':
+        form = AudioFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('audio_upload')
+    else:
+        form = AudioFileForm()
+
+    audio_files = AudioFile.objects.all()
+
+    return render(request, 'audio_upload.html', {'form': form, 'audio_files': audio_files})
+
+def audio_download(request, pk):
+    x=AudioFile.objects.count()
+    audio_file = AudioFile.objects.get(pk=x)
+    response = FileResponse(audio_file.audio_file)
+    response['Content-Disposition'] = f'attachment; filename="{audio_file.audio_file.name}"'
+    return response
