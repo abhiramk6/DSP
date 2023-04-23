@@ -1,1 +1,29 @@
-<h1>Hello {{name}}</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Image and Audio Processing</h1>
+    <div class="col-md-4 mb-3">
+        <a href="{% url 'upload_image'%}" class="text-decoration-none">
+          <button class="btn btn-primary btn-block">Image Processing</button>
+        </a>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <a href="{% url 'audio_upload'%}" class="text-decoration-none">
+          <button class="btn btn-primary btn-block">Audio Processing</button>
+        </a>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <a href="{% url 'text_to_speech'%}" class="text-decoration-none">
+          <button class="btn btn-primary btn-block">Text to Speech Synthesis</button>
+        </a>
+    </div>
+
+    
+</div>
+
+
+{% endblock %}

@@ -20,13 +20,14 @@ from django.db.models import Model
 from rembg import remove
 import cv2
 
+from gtts import gTTS
 
 
 
 
 
-# def home(request):
-#     return render(request,'home.html',{'name':'Sandeep'})
+def home(request):
+    return render(request,'home.html')
 
 
 def upload_image(request):
@@ -139,3 +140,27 @@ def audio_download(request, pk):
     response = FileResponse(audio_file.audio_file)
     response['Content-Disposition'] = f'attachment; filename="{audio_file.audio_file.name}"'
     return response
+
+
+def text_to_speech(request):
+    if request.method == 'POST':
+        text = request.POST['text']
+        language = 'en'
+        tts = gTTS(text=text, lang=language)
+        tts.save('audio/tts_audio.mp3')
+        # os.system('start tts_audio.mp3') # On Windows
+    return render(request, 'text_to_speech.html')
+
+def download_ttsaudio(request):
+    fname="./audio/tts_audio.mp3"
+    f = open(fname,"rb") 
+    response = HttpResponse()
+    response.write(f.read())
+    response['Content-Type'] ='audio/mp3'
+    response['Content-Disposition'] = f'attachment; filename="tts_audio.mp3"'
+    return response
+
+
+
+
+

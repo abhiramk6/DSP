@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+    <h1 class="text-center mb-4">Text to Speech Synthesis</h1>
+    <form method="POST" action="{% url 'text_to_speech' %}">
+        {% csrf_token %}
+        <label for="text">Enter text:</label>
+        <input type="text" id="text" name="text" size="100">
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <br>
+
+    <div class="col-md-4 mb-3">
+        <a href="{% url 'download_ttsaudio'%}" class="text-decoration-none">
+          <button class="btn btn-primary btn-block">TTS Audio Download</button>
+        </a>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <a href="{% url 'home'%}" class="text-decoration-none">
+          <button class="btn btn-primary btn-block">HOME</button>
+        </a>
+    </div>
+
+   
+
+    
+</div>
+    
+{% endblock %}
