@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, upload_image, original_image, gray_image, rotated_image, rmbg_image, audio_upload, audio_download, text_to_speech,download_ttsaudio
+from .views import home, upload_image, original_image, gray_image, rotated_image, audio_upload, audio_download, text_to_speech,download_ttsaudio
 # from .views import home
 
 urlpatterns = [
