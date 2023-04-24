@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import home, upload_image, original_image, gray_image, rotated_image, audio_upload, audio_download, text_to_speech,download_ttsaudio
 # from .views import home
 
@@ -13,4 +15,4 @@ urlpatterns = [
     path('audio/download/<int:pk>/', audio_download, name='audio_download'),
     path('tts/', text_to_speech, name='text_to_speech'),
     path('audio/download/', download_ttsaudio, name='download_ttsaudio'),
-    ]
+    ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
