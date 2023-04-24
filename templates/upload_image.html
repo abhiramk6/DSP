@@ -5,20 +5,12 @@
 
 <div class="container mt-5">
   <h1 class="text-center mb-4">UPLOAD IMAGE</h1>
-  <form method="post" enctype="multipart/form-data" style="display: flex;">
-  {% csrf_token %}
-  <div class = "px-4 mx-4">
-    {{ form.title.label_tag }}
-    {{ form.title }}
-  </div>
-  <div class = "px-4 ">
-    {{ form.file.label_tag }}
-    {{ form.file }}
-  </div>
-      <div class="col-md-4 mb-3">
-  <button class="btn btn-primary btn-block" type="submit">Upload</button>
-      </div>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+<button type="submit" id="myBtn1" >Upload</button>
 </form>
+
 
 
   <div class="row py-4">
