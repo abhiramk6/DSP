@@ -23,9 +23,6 @@ import cv2
 from gtts import gTTS
 
 
-
-
-
 def home(request):
     return render(request,'home.html')
 
