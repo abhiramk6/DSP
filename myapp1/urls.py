@@ -15,4 +15,4 @@ urlpatterns = [
     path('audio/download/<int:pk>/', audio_download, name='audio_download'),
     path('tts/', text_to_speech, name='text_to_speech'),
     path('audio/download/', download_ttsaudio, name='download_ttsaudio'),
-    ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ]
