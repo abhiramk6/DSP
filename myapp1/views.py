@@ -32,6 +32,7 @@ def upload_image(request):
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('upload_image')
     else:
         form = ImageForm()
     
