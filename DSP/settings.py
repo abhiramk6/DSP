@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-o+o!kx6kli^q)jt7qq1w1^$^&w$)z%r0dp4ufpa!yh#x-%$h=w"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['tseek-multimedia.onrender.com','127.0.0.1']
 
