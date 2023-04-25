@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
     <div class="container mt-5">
     <h1 class="text-center mb-4">Text to Speech Synthesis</h1>
@@ -18,6 +20,13 @@
           <button class="btn btn-primary btn-block">TTS Audio Download</button>
         </a>
     </div>
+
+    <div class="col-md-4 mb-3">
+      <audio controls>
+        <source src="{% static 'audio/' %}{{ audio_file }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+  </div>
 
     <div class="col-md-4 mb-3">
         <a href="{% url 'home'%}" class="text-decoration-none">
