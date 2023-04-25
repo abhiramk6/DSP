@@ -146,7 +146,7 @@ def text_to_speech(request):
         text = request.POST['text']
         language = 'en'
         tts = gTTS(text=text, lang=language)
-        tts.save('static/audio/tts_audio.mp3')
+        tts.save('./static/audio/tts_audio.mp3')
         # os.system('start tts_audio.mp3') # On Windows
     audio_file = 'tts_audio.mp3'
     context = {'audio_file': audio_file}    
