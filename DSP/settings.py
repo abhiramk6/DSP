@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-o+o!kx6kli^q)jt7qq1w1^$^&w$)z%r0dp4ufpa!yh#x-%$h=w"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['tseek-multimedia.onrender.com','127.0.0.1']
 
@@ -113,6 +113,9 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 

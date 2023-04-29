@@ -21,6 +21,7 @@ from django.db.models import Model
 import cv2
 
 from gtts import gTTS
+from mtranslate import translate as trans
 
 
 def home(request):
@@ -151,6 +152,19 @@ def text_to_speech(request):
     audio_file = 'tts_audio.mp3'
     context = {'audio_file': audio_file}    
     return render(request, 'text_to_speech.html',context)
+
+def translate(request):
+    translated_text = " "
+    if request.method == 'POST':
+        text = request.POST['text']
+        language = 'te'
+        translated_text = trans(text,language)
+        # tts.save('./static/audio/tts_audio.mp3')
+        # os.system('start tts_audio.mp3') # On Windows
+    # audio_file = 'tts_audio.mp3'
+    context = {'translated_text': translated_text} 
+
+    return render(request, 'translate.html',context)
 
 def download_ttsaudio(request):
     fname="./static/audio/tts_audio.mp3"
